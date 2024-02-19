@@ -31,6 +31,7 @@
   },
   "pnpm": {
     "overrides": {
+      "esbuild": "^0.20.1",
       "array-includes": "npm:@nolyfill/array-includes@latest",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
       "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
