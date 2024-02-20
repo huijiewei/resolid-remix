@@ -1,11 +1,13 @@
 {
   "name": "@resolid/remix-utils",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "sideEffects": false,
   "description": "Resolid Remix 增强工具",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "files": [
     "dist"
@@ -34,10 +36,9 @@
   "engines": {
     "node": "20.x"
   },
+  "homepage": "https://resolid.tech",
   "repository": {
     "type": "git",
     "url": "https://github.com/huijiewei/resolid-remix-utils"
-  },
-  "homepage": "https://resolid.tech",
-  "license": "MIT"
+  }
 }

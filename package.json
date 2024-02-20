@@ -1,6 +1,5 @@
 {
   "name": "resolid-remix",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -30,6 +29,7 @@
     "pnpm": "8.x"
   },
   "packageManager": "pnpm@8.15.3",
+  "homepage": "https://resolid.tech",
   "repository": {
     "type": "git",
     "url": "https://github.com/huijiewei/resolid-remix.git"

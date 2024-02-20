@@ -1,7 +1,7 @@
 {
   "name": "website",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
     "dev": "remix vite:dev",
@@ -19,7 +19,7 @@
     "@resolid/remix-utils": "workspace:^",
     "@resolid/utils": "workspace:^",
     "dotenv": "^16.4.5",
-    "hono": "^4.0.4",
+    "hono": "^4.0.5",
     "isbot": "^5.1.0",
     "react": "18.3.0-canary-a9cc32511-20240215",
     "react-dom": "18.3.0-canary-a9cc32511-20240215"
