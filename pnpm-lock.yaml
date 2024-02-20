@@ -85,6 +85,31 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  packages/react-ui:
+    dependencies:
+      '@resolid/utils':
+        specifier: workspace:^
+        version: link:../utils
+      '@tw-classed/core':
+        specifier: ^1.7.0
+        version: 1.7.0
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.0
+    devDependencies:
+      '@resolid/config':
+        specifier: workspace:^
+        version: link:../config
+      react:
+        specifier: 18.3.0-canary-a9cc32511-20240215
+        version: 18.3.0-canary-a9cc32511-20240215
+      react-dom:
+        specifier: 18.3.0-canary-a9cc32511-20240215
+        version: 18.3.0-canary-a9cc32511-20240215(react@18.3.0-canary-a9cc32511-20240215)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(postcss@8.4.35)(typescript@5.3.3)
+
   packages/remix-plugins:
     dependencies:
       minimatch:
@@ -172,6 +197,9 @@ importers:
       '@remix-run/server-runtime':
         specifier: ^2.6.0
         version: 2.6.0(typescript@5.3.3)
+      '@resolid/react-ui':
+        specifier: workspace:^
+        version: link:../packages/react-ui
       '@resolid/remix-utils':
         specifier: workspace:^
         version: link:../packages/remix-utils
@@ -1720,6 +1748,10 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
+  /@tw-classed/core@1.7.0:
+    resolution: {integrity: sha512-D57pNSN3JY2pRB6iPzZKB0m0hWfNGZ6MkxavYxgTDp+YIosi9VwDn6Cc87qcOM3ogu2CFvIAi2XXoAREnz0UFQ==}
+    dev: false
+
   /@types/acorn@4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
@@ -2528,6 +2560,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -4424,7 +4461,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache@10.2.0:
     resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
@@ -6092,7 +6128,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.3.0-canary-a9cc32511-20240215
       scheduler: 0.24.0-canary-a9cc32511-20240215
-    dev: false
 
   /react-is@18.3.0-canary-a9cc32511-20240215:
     resolution: {integrity: sha512-BRcfZW2Z74ZyT1VT1pdvD+kh75V/kTpqJJrmm6PCGcwDUtuVmt4JizjDnMQtdN8qptUvdlK8udiYDm7j5pAaiQ==}
@@ -6131,7 +6166,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -6379,7 +6413,6 @@ packages:
     resolution: {integrity: sha512-4gyJkA9RIIV/YG7cN9uYvxfaFSh2kiSHlm+hPT862PKT8I9GD6c23T7sNpuwFvKBV4EMNpvMvjooP5bE7pexeQ==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
