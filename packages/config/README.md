@@ -1,13 +1,13 @@
 # @resolid/config
 
-Resolid 通用配置, 包含了 `TypeScript`, `ESLint` 和 `Prettier` 的基础配置
+Resolid 通用配置, 包含了 `TypeScript`, `ESLint` 的基础配置
 
 ## 使用方法
 
 ### 安装
 
 ```bash
-pnpm i -D eslint prettier @resolid/config
+pnpm i -D eslint @resolid/config
 ```
 
 ### TypeScript 配置
@@ -71,27 +71,14 @@ import eslintNode from "@resolid/config/eslint.node";
 export default [...eslintBowser, ...eslintNode];
 ```
 
-### Prettier 配置
+### ESLint 配置查看
 
-Prettier 会自动导入 `.editorconfig` 的配置, 所以推荐先进行 editorconfig 配置, 另外内置了 `prettier-plugin-organize-imports` 插件
+你可以进入拥有 `eslint.config.js` 文件的目录运行下面的命令来检查
 
-```editorconfig
-# .editorconfig
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
+```bash
+npx eslint-flat-config-viewer
 ```
 
-```js
-// .prettierrc.js
-import prettierConfig from "@resolid/config/prettier";
+## 感谢
 
-/** @type {import('prettier').Options} */
-export default {
-  ...prettierConfig,
-};
-```
+- [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer)
