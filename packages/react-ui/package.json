@@ -1,0 +1,48 @@
+{
+  "name": "@resolid/react-ui",
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "description": "Resolid React UI 组件",
+  "keywords": [
+    "resolid",
+    "react",
+    "react-hook"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsup"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@resolid/utils": "workspace:^",
+    "@tw-classed/core": "^1.7.0",
+    "clsx": "^2.1.0"
+  },
+  "devDependencies": {
+    "@resolid/config": "workspace:^",
+    "react": "18.3.0-canary-a9cc32511-20240215",
+    "react-dom": "18.3.0-canary-a9cc32511-20240215",
+    "tsup": "^8.0.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huijiewei/resolid-react-ui"
+  },
+  "license": "MIT"
+}
