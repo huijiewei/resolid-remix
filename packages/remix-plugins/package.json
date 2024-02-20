@@ -1,11 +1,13 @@
 {
   "name": "@resolid/remix-plugins",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "sideEffects": false,
   "description": "Resolid Remix 扩展插件",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "files": [
     "dist"
@@ -41,7 +43,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@vercel/nft": "^0.26.4",
     "dotenv": "^16.4.5",
-    "hono": "^4.0.4",
+    "hono": "^4.0.5",
     "rollup": "^4.12.0",
     "tsup": "^8.0.2",
     "type-fest": "^4.10.2",
@@ -53,15 +55,14 @@
     "@remix-run/server-runtime": "^2.6.0",
     "@vercel/nft": "^0.26.4",
     "dotenv": "^16.4.5",
-    "hono": "^4.0.4"
+    "hono": "^4.0.5"
   },
   "engines": {
     "node": "20.x"
   },
+  "homepage": "https://resolid.tech",
   "repository": {
     "type": "git",
     "url": "https://github.com/huijiewei/resolid-remix-plugins"
-  },
-  "homepage": "https://resolid.tech",
-  "license": "MIT"
+  }
 }
