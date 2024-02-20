@@ -1,0 +1,43 @@
+{
+  "name": "@resolid/remix-utils",
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "description": "Resolid Remix 增强工具",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsup"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@remix-run/node": "^2.6.0",
+    "@remix-run/server-runtime": "^2.6.0",
+    "@resolid/config": "workspace:^",
+    "tsup": "^8.0.2"
+  },
+  "peerDependencies": {
+    "@remix-run/node": "^2.6.0",
+    "@remix-run/server-runtime": "^2.6.0"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huijiewei/resolid-remix-utils"
+  },
+  "homepage": "https://resolid.tech",
+  "license": "MIT"
+}
