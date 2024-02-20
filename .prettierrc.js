@@ -1,6 +1,7 @@
-import prettierConfig from "./packages/config/src/prettier.js";
-
 /** @type {import('prettier').Options} */
-export default {
-  ...prettierConfig,
+const config = {
+  plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
 };
+
+// noinspection JSUnusedGlobalSymbols
+export default config;
