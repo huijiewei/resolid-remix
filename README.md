@@ -15,13 +15,15 @@
 
 ## 子项目
 
-| 包名                                                                     | 介绍               |
-| ------------------------------------------------------------------------ | ------------------ |
-| [@resolid/config](https://github.com/huijiewei/resolid-config)           | 通用配置包         |
-| [@resolid/react-hooks](https://github.com/huijiewei/resolid-react-hooks) | React Hooks        |
-| [@resolid/react-ui](https://github.com/huijiewei/resolid-react-ui)       | React 组件包       |
-| [@resolid/tailwind](https://github.com/huijiewei/resolid-tailwind)       | TailwindCSS 预设包 |
-| [@resolid/utils](https://github.com/huijiewei/resolid-utils)             | 基础工具包         |
+| 包名                                                                         | 介绍               |
+| ---------------------------------------------------------------------------- | ------------------ |
+| [@resolid/config](https://github.com/huijiewei/resolid-config)               | 通用配置包         |
+| [@resolid/react-hooks](https://github.com/huijiewei/resolid-react-hooks)     | React Hooks        |
+| [@resolid/react-ui](https://github.com/huijiewei/resolid-react-ui)           | React 组件包       |
+| [@resolid/remix-plugins](https://github.com/huijiewei/resolid-remix-plugins) | Remix 插件扩展包   |
+| [@resolid/remix-utils](https://github.com/huijiewei/resolid-remix-utils)     | Remix 增强工具包   |
+| [@resolid/tailwind](https://github.com/huijiewei/resolid-tailwind)           | TailwindCSS 预设包 |
+| [@resolid/utils](https://github.com/huijiewei/resolid-utils)                 | 基础工具包         |
 
 ## 贡献指南
 
