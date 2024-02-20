@@ -1,5 +1,6 @@
 **/dist
 **/build
+.vercel
 .vscode
 .idea
 pnpm-lock.yaml
