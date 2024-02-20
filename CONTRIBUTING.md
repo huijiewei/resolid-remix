@@ -32,7 +32,7 @@ type 有以下几个值:
 - `feat`: 表示增加了新功能
 - `fix`: 表示修复了一个 BUG
 - `build`: 用于修改项目构建系统, 例如修改依赖, 外部接口等
-- `ci`: 用于修改持续集成流程, 例如修改 Travis,Jenkins,Github Action 等工作流配置
+- `ci`: 用于修改持续集成流程, 例如修改 Travis, Jenkins, Github Action 等工作流配置
 - `chore`: 用于对非业务性代码进行修改, 例如修改构建流程或者工具配置等
 - `docs`: 用于修改文档, 例如修改 README 文件, API 文档等
 - `style`: 用于修改代码的样式, 例如调整缩进, 空格, 空行等

@@ -106,7 +106,7 @@ export default {
 
 > Vercel 项目 Framework Preset 需设置为 Vite, Node.js Version 需设置为 20.x
 >
-> 如果你使用的是 monorepo 结构, 请设置 Root Directory 为需要部署的项目目录, 然后自定义相关命令, 入下图
+> 如果你使用的是 monorepo 结构, 请设置 Root Directory 为需要部署的项目目录, 然后自定义相关命令, [Resolid Remix](https://github.com/huijiewei/resolid-remix) 的配置如下图
 > ![Vercel相关设置](.github/assets/vercel-settings.png)
 
 ## 感谢
