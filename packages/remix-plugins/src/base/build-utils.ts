@@ -1,68 +1,72 @@
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import { rm } from "node:fs/promises";
+import { readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { rollup } from "rollup";
 import type { PackageJson } from "type-fest";
-import type { RollupCommonJSOptions } from "vite";
+import { type ResolvedConfig, type RollupCommonJSOptions } from "vite";
 
-const parseSsrExternal = (ssrExternal: string[] | boolean | undefined): string[] => {
-  if (Array.isArray(ssrExternal)) {
-    return ssrExternal;
-  }
+export type SsrExternal = ResolvedConfig["ssr"]["external"];
 
-  return [];
+const getPackageDependencies = (dependencies: Record<string, string | undefined>, ssrExternal: SsrExternal) => {
+  const packageDependencies = Object.keys(dependencies)
+    .filter((key) => {
+      if (ssrExternal === undefined || ssrExternal === true) {
+        return false;
+      }
+
+      return ssrExternal.includes(key);
+    })
+    .reduce((obj: Record<string, string>, key) => {
+      obj[key] = packageDependencies[key] ?? "";
+
+      return obj;
+    }, {});
+
+  return packageDependencies;
 };
 
-export const buildPackageJson = (pkg: PackageJson, ssrExternal: string[] | boolean | undefined): PackageJson => {
-  const parsedSsrExternal = parseSsrExternal(ssrExternal);
-
-  return {
+const writePackageJson = async (pkg: PackageJson, outputFile: string, dependencies: unknown) => {
+  const distPkg = {
     name: pkg.name,
     type: pkg.type,
     scripts: {
       postinstall: pkg.scripts?.postinstall ?? "",
     },
-    dependencies: {
-      ...Object.keys(pkg.dependencies ?? {})
-        .filter((key) => parsedSsrExternal.includes(key))
-        .reduce((obj: Record<string, string>, key) => {
-          obj[key] = pkg.dependencies?.[key] ?? "";
+    dependencies: dependencies,
+  };
 
-          return obj;
-        }, {}),
-      ...Object.keys(pkg.devDependencies ?? {})
-        .filter((key) => parsedSsrExternal.includes(key))
-        .reduce((obj: Record<string, string>, key) => {
-          obj[key] = pkg.devDependencies?.[key] ?? "";
-
-          return obj;
-        }, {}),
-    },
-  } as PackageJson;
+  await writeFile(outputFile, JSON.stringify(distPkg, null, 2), "utf8");
 };
 
 export const bundleServer = async (
   outDir: string,
   entryFile: string,
+  packageFile: string,
   commonjsOptions: RollupCommonJSOptions,
-  ssrExternal: string[] | boolean | undefined,
+  ssrExternal: string[] | true | undefined,
 ) => {
+  const pkg = JSON.parse(await readFile(packageFile, "utf8")) as PackageJson;
+
+  const packageDependencies = getPackageDependencies({ ...pkg.dependencies, ...pkg.devDependencies }, ssrExternal);
+
+  await writePackageJson(pkg, join(outDir, "package.json"), packageDependencies);
+
   const inputEntry = join(outDir, entryFile);
 
   const bundle = await rollup({
     input: inputEntry,
     plugins: [
-      json(),
       nodeResolve({
         preferBuiltins: true,
         exportConditions: ["node"],
-        dedupe: ["react", "react-dom", "@remix-run/react"],
+        dedupe: ["react", "react-dom", "@remix-run/react", "@remix-run/server-runtime"],
       }),
       commonjs({ ...commonjsOptions, strictRequires: true }),
+      json(),
     ],
-    external: parseSsrExternal(ssrExternal),
+    external: Object.keys(packageDependencies),
     logLevel: "silent",
   });
 
