@@ -1,13 +1,10 @@
 import { nodeFileTrace } from "@vercel/nft";
-import { cp, mkdir, readFile, readdir, realpath, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readdir, realpath, rm, writeFile } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
 import { cwd } from "node:process";
 import { fileURLToPath } from "node:url";
-import type { PackageJson } from "type-fest";
 import type { ConfigEnv, Plugin, RollupCommonJSOptions, UserConfig } from "vite";
-import { buildPackageJson, bundleServer } from "../base/build-utils";
-
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+import { bundleServer, type SsrExternal } from "../base/build-utils";
 
 export type VercelServerlessBuildOptions = {
   regions: string | string[];
@@ -17,9 +14,11 @@ export type VercelServerlessBuildOptions = {
 };
 
 const vercelServerlessBuild = (options: VercelServerlessBuildOptions): Plugin => {
+  const __dirname = fileURLToPath(new URL(".", import.meta.url));
+
   let root = "";
   let outDir = "";
-  let ssrExternal: string[] | boolean | undefined;
+  let ssrExternal: SsrExternal;
   let commonjsOptions: RollupCommonJSOptions;
 
   const cacheFiles = options.cacheFiles ?? [];
@@ -45,13 +44,6 @@ const vercelServerlessBuild = (options: VercelServerlessBuildOptions): Plugin =>
 
       await cp(join(__dirname, entryFile), join(outDir, entryFile));
 
-      const bundleFile = await bundleServer(outDir, entryFile, commonjsOptions, ssrExternal ?? []);
-
-      const distPkg = buildPackageJson(
-        JSON.parse(await readFile(join(root, "package.json"), "utf8")) as PackageJson,
-        ssrExternal ?? [],
-      );
-
       /*
       * # .vercel/
         #   project.json
@@ -66,9 +58,15 @@ const vercelServerlessBuild = (options: VercelServerlessBuildOptions): Plugin =>
 
       const vercelRoot = join(root, ".vercel");
       await rm(vercelRoot, { recursive: true, force: true });
-
       await mkdir(vercelRoot, { recursive: true });
-      await writeFile(join(vercelRoot, "package.json"), JSON.stringify(distPkg, null, 2), "utf8");
+
+      const bundleFile = await bundleServer(
+        outDir,
+        entryFile,
+        join(root, "package.json"),
+        commonjsOptions,
+        ssrExternal,
+      );
 
       const vercelOutput = join(vercelRoot, "output");
       await mkdir(vercelOutput, { recursive: true });
